@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Hello page
+Route::get('/hello', function () {
+    return 'Hello World';
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Accessing homepage by calling controller
+Route::get('/', [HomeController::class,'index'])->name('home');
+
+//Route -> Controller -> View
+Route::get('/test', [HomeController::class,'test'])->name('test');
+
+//Route with parameters
+Route::get('/param/{id}/{number}', [HomeController::class,'param'])->name('param');
+
+//Route with post
+Route::post('/save', [HomeController::class,'save'])->name('save');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
