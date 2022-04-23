@@ -13,7 +13,7 @@
                <!-- LOGO SECTION -->
                <header class="navbar-header">
 
-                   <a href="index.html" class="navbar-brand">
+                   <a href="/admin" class="navbar-brand">
                    <img src="{{ asset('assets') }}/admin/img/logo.png" alt="" /></a>
                </header>
                <!-- END LOGO SECTION -->
