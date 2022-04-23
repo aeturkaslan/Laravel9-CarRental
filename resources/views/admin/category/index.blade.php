@@ -26,7 +26,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Category List
+                                <a href="/admin/category/create" class="btn btn-primary btn-lg">Add New Category</a>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
