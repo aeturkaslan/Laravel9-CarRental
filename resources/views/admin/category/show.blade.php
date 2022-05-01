@@ -23,8 +23,8 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <a href="/admin/category/edit/{{ $data->id }}" class="btn btn-info btn-lg">Edit Category</a>
-                                <a href="/admin/category/destroy/{{ $data->id }}" class="btn btn-danger btn-lg" 
+                                <a href="{{ route ('admin.category.edit', ['id'=>$data->id]) }}" class="btn btn-info btn-lg">Edit Category</a>
+                                <a href="{{ route ('admin.category.destroy', ['id'=>$data->id]) }}" class="btn btn-danger btn-lg" 
                                 onclick="return confirm('Are you sure you want to delete this category? This action cannot be undone!')">Delete Category</a>
                             </div>
                             <div class="panel-body">

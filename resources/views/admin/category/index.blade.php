@@ -26,7 +26,7 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <a href="/admin/category/create" class="btn btn-primary btn-lg">Add New Category</a>
+                                <a href="{{ route ('admin.category.create') }}" class="btn btn-primary btn-lg">Add New Category</a>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -53,10 +53,10 @@
                                                 <td>{{ $rs->description }}</td>
                                                 <td>{{ $rs->image }}</td>
                                                 <td>{{ $rs->status }}</td>
-                                                <td><a href="/admin/category/edit/{{ $rs->id }}" class="btn btn-info btn-sm">Edit</a></td>
-                                                <td><a href="/admin/category/destroy/{{ $rs->id }}" class="btn btn-danger btn-sm" 
+                                                <td><a href="{{ route ('admin.category.edit', ['id'=>$rs->id]) }}" class="btn btn-info btn-sm">Edit</a></td>
+                                                <td><a href="{{ route ('admin.category.destroy', ['id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
                                                     onclick="return confirm('Are you sure you want to delete this category? This action cannot be undone!')">Delete</a></td>
-                                                <td><a href="/admin/category/show/{{ $rs->id }}" class="btn btn-success btn-sm">Show</a></td>
+                                                <td><a href="{{ route ('admin.category.show', ['id'=>$rs->id]) }}" class="btn btn-success btn-sm">Show</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
