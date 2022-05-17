@@ -47,10 +47,10 @@
                                                     <input type="text" class="form-control" name='description' value="{{ $data->description }}">
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <label>Image</label>
-                                                    <input type="file" />
-                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Image</label>
+                                                    <input class="form-control" type="file" name="image" id="formFile">
+                                                  </div>
 
                                                 <div class="form-group">
                                                     <label>Status</label>
