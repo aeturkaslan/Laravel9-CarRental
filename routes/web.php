@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\CarController;
 use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
 use App\Http\Controllers\HomeController;
@@ -62,4 +63,19 @@ Route::get('/destroy/{id}', 'destroy')->name('destroy');
 Route::get('/show/{id}', 'show')->name('show');
 
 });
+
+
+// ********************* ADMIN CAR ROUTES *************************
+
+Route::prefix('/car')->name('car.')->controller(CarController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    Route::get('/show/{id}', 'show')->name('show');
+    
+    });
 });
