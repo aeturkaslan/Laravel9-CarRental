@@ -42,6 +42,7 @@
                                                 <th>Fuel</th>
                                                 <th>Luggage</th>
                                                 <th>Image</th>
+                                                <th>Image Gallery</th>
                                                 <th>Status</th>
                                                 <th style="width: 50px">Edit</th>
                                                 <th style="width: 50px">Delete</th>
@@ -67,6 +68,11 @@
 
                                                 </td>
 
+                                                <td> <a href="{{ route ('admin.image.index', ['cid'=>$rs->id]) }}" 
+                                                    onclick="return !window.open(this.href, '','top=50 left=100 width=1100, height=700')">
+                                                    <img src="{{ asset('assets') }}/admin/img/gallery.png" style="height: 50px">
+                                                </a>
+                                                </td>
                                                 <td>{{ $rs->status }}</td>
                                                 <td><a href="{{ route ('admin.car.edit', ['id'=>$rs->id]) }}" class="btn btn-info btn-sm">Edit</a></td>
                                                 <td><a href="{{ route ('admin.car.destroy', ['id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
