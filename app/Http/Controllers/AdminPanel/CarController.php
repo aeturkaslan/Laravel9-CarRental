@@ -62,6 +62,8 @@ class CarController extends Controller
         $data->price = $request->price;
         $data->seats = $request->seats;
         $data->gear = $request->gear;
+        $data->fuel = $request->fuel;
+        $data->luggage = $request->luggage;
         $data->status = $request->status;
         if ($request->file('image')){
             $data->image = $request->file('image')->store('images');
@@ -122,6 +124,7 @@ class CarController extends Controller
         $data->price = $request->price;
         $data->seats = $request->seats;
         $data->gear = $request->gear;
+        $data->fuel = $request->fuel;
         $data->luggage = $request->luggage;
 
         $data->status = $request->status;

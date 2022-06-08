@@ -1,6 +1,10 @@
 @extends('layouts.adminbase')
  
 @section('title', 'Add Car')
+
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+@endsection
  
 @section('content')
         <!--PAGE CONTENT -->
@@ -90,9 +94,19 @@
 
                                                 <div class="form-group">
                                                     <label>Detail</label>
-                                                    <textarea class="form-control" name='detail'>
+                                                    <textarea class="form-control" id="detail" name='detail'>
 
                                                     </textarea>
+                                                    <script>
+                                                        ClassicEditor
+                                                                .create( document.querySelector( '#detail' ) )
+                                                                .then( editor => {
+                                                                        console.log( editor );
+                                                                } )
+                                                                .catch( error => {
+                                                                        console.error( error );
+                                                                } );
+                                                </script>
                                                     
                                                 </div>
 

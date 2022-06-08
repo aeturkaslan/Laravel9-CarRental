@@ -90,7 +90,7 @@
 
                                             <tr>
                                                 <td style="width: 250px">Detail</td>
-                                                <td>{{ $data->detail }}</td>
+                                                <td>{!! $data->detail !!}</td>
                                             </tr>
 
                                             <tr>
