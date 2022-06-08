@@ -38,6 +38,8 @@
         @section('sidebar')
             
         @show
+
+        @yield('slider')
  
         <div class="container">
             @yield('content')
