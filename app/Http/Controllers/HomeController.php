@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+
+    public static function maincategorylist(){
+        return Category::where('parent_id', '=', 0)->with('children')->get();
+    }
+
     public function index(){
         $sliderdata = Car::limit(4)->get();
         return view('home.index', [
@@ -16,6 +22,17 @@ class HomeController extends Controller
     }
 
     public function car($id){ 
+        $data = Car::find($id);
+        $images = DB::table('images')->where('car_id', $id)->get();
+        return view('home.car', [
+            'data'=>$data,
+            'images'=>$images
+        ]);
+    }
+
+    public function categorycars($id){ 
+        echo "Category Cars";
+        exit();
         $data = Car::find($id);
         $images = DB::table('images')->where('car_id', $id)->get();
         return view('home.car', [

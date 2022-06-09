@@ -15,12 +15,18 @@
         </ul>
       </div> --}}
 
+     
       <nav class="navbar navbar-expand-lg navbar-light ">
+
+        @php
+          $maincategories = App\Http\Controllers\HomeController::maincategorylist();
+        @endphp
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -38,11 +44,24 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categories
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+              @foreach ($maincategories as $rs)
+              <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item " href="#">{{ $rs->title }}</a>
+                <div class="custom-menu">
+                  <div class="row">
+                    {{-- <ul >
+                      <li><a href="#">deneme</a></li>
+                    </ul> --}}
+
+                    @if (count($rs->children))
+                        @include('home.categorytree', ['children' => $rs->children])
+                      
+                    @endif
+                  </div>
+                </div>
+                @endforeach
               </div>
+             
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Cars</a>
@@ -56,8 +75,11 @@
           </ul>
         </div>
       </nav>
-
+      
       {{-- <div class="btn-group">
+        @php
+          $maincategories = App\Http\Controllers\HomeController::maincategorylist();
+        @endphp
         <button type="button" class="btn btn-primary">Home</button>
         <button type="button" class="btn btn-primary">About</button>
         <button type="button" class="btn btn-primary">Services</button>
@@ -66,17 +88,18 @@
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
              Categories
           </button>
+          @foreach ($maincategories as $rs)
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">1</a></li>
-            <li><a class="dropdown-item" href="#">2</a></li>
-            <li><a class="dropdown-item" href="#">3</a></li>
+            
+            <li><a class="dropdown-item" href="#">{{ $rs->title }}</a></li>
           </ul>
+          @endforeach
         </div>
         <button type="button" class="btn btn-primary">Cars</button>
         <button type="button" class="btn btn-primary">Blog</button>
         <button type="button" class="btn btn-primary">Contact</button>
-      </div> --}}
-
+      </div>
+ --}}
       {{-- <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
