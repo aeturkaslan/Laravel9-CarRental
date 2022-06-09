@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="carousel-car owl-carousel">
-                  @foreach ($sliderdata as $rs)
+                  @foreach ($carlist1 as $rs)
 
                   <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="{{ Storage::url($rs->image) }}" style="width: 275px; height:150px" alt="Card image cap">

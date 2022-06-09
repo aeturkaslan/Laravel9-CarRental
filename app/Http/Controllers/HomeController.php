@@ -16,9 +16,12 @@ class HomeController extends Controller
 
     public function index(){
         $sliderdata = Car::limit(4)->get();
+        $carlist1 = Car::limit(4)->get();
         return view('home.index', [
-            'sliderdata'=>$sliderdata
+            'sliderdata'=>$sliderdata,
+            'carlist1'=>$carlist1
         ]);
+
     }
 
     public function car($id){ 
@@ -31,13 +34,14 @@ class HomeController extends Controller
     }
 
     public function categorycars($id){ 
-        echo "Category Cars";
-        exit();
-        $data = Car::find($id);
-        $images = DB::table('images')->where('car_id', $id)->get();
-        return view('home.car', [
-            'data'=>$data,
-            'images'=>$images
+
+        $category = Category::find($id);
+        /* $cars = Car::where('category_id',$id)->get(); */
+        $cars = DB::table('cars')->where('category_id', $id)->get();
+        
+        return view('home.categorycars', [
+            'category'=>$category,
+            'cars'=>$cars
         ]);
     }
 

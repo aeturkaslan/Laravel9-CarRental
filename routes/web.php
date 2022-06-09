@@ -42,7 +42,7 @@ Route::post('/save', [HomeController::class,'save'])->name('save');
 //Car detail route
 Route::get('/car/{id}', [HomeController::class,'car'])->name('car');
 
-//Car detail route
+//Categorycars route
 Route::get('/categorycars/{id}/{slug}', [HomeController::class,'categorycars'])->name('categorycars');
 
 
