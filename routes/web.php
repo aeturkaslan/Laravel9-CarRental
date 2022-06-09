@@ -62,6 +62,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::get('/', [AdminPanelHomeController::class,'index'])->name('index');
 
 
+// ********************* GENERAL ROUTES *************************
+
+Route::get('/setting', [AdminPanelHomeController::class,'setting'])->name('setting');
+Route::post('/setting', [AdminPanelHomeController::class,'settingUpdate'])->name('setting.update');
+
+
+
 // ********************* ADMIN CATEGORY ROUTES *************************
 
 Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {

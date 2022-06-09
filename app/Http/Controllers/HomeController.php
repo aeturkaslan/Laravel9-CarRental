@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,9 @@ class HomeController extends Controller
     public function index(){
         $sliderdata = Car::limit(4)->get();
         $carlist1 = Car::limit(4)->get();
+        $setting = Setting::first();
         return view('home.index', [
+            'setting'=>$setting,
             'sliderdata'=>$sliderdata,
             'carlist1'=>$carlist1
         ]);
