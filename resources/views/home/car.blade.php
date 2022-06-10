@@ -19,6 +19,7 @@
       
 
       <section class="ftco-section ftco-car-details">
+        @include('home.messages')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -170,72 +171,83 @@
                           <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
                             <div class="row">
                                      <div class="col-md-7">
-                                         <h3 class="head">23 Reviews</h3>
+                                         <h3 class="head">{{-- 23 --}} Reviews</h3>
+
+                                         {{-- All Reviews --}}
+
+                                         @foreach ($reviews as $rs)
+                                             
                                          <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                                             <div class="user-img" style="background-image: url('{{ asset('assets') }}/images/person_1.jpg')"></div>
                                              <div class="desc">
                                                  <h4>
-                                                     <span class="text-left">Jacob Webb</span>
-                                                     <span class="text-right">14 March 2018</span>
+                                                     <span class="text-left">{{ $rs->user->name }}</span>
+                                                     <span class="text-right">{{ $rs->created_at }}</span>
                                                  </h4>
                                                  <p class="star">
                                                      <span>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
+                                                         <i class="ion-ios-star @if ($rs->rate<1) -o empty @endif"></i>
+                                                         <i class="ion-ios-star @if ($rs->rate<2) -o empty @endif"></i>
+                                                         <i class="ion-ios-star @if ($rs->rate<3) -o empty @endif"></i>
+                                                         <i class="ion-ios-star @if ($rs->rate<4) -o empty @endif"></i>
+                                                         <i class="ion-ios-star @if ($rs->rate<5) -o empty @endif"></i>
                                                      </span>
                                                      <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
                                                  </p>
-                                                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+                                                 <p>{{ $rs->review }}</p>
                                              </div>
                                          </div>
-                                         <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url('{{ asset('assets') }}/images/person_2.jpg')"></div>
-                                             <div class="desc">
-                                                 <h4>
-                                                     <span class="text-left">Jacob Webb</span>
-                                                     <span class="text-right">14 March 2018</span>
-                                                 </h4>
-                                                 <p class="star">
-                                                     <span>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                     </span>
-                                                     <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                 </p>
-                                                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                             </div>
-                                         </div>
-                                         <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                                             <div class="desc">
-                                                 <h4>
-                                                     <span class="text-left">Jacob Webb</span>
-                                                     <span class="text-right">14 March 2018</span>
-                                                 </h4>
-                                                 <p class="star">
-                                                     <span>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                         <i class="ion-ios-star"></i>
-                                                     </span>
-                                                     <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                                 </p>
-                                                 <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-                                             </div>
-                                         </div>
+                                         @endforeach
                                      </div>
+
+
+
+
+
+                                     {{-- Rating & Review --}}
                                      <div class="col-md-5">
                                          <div class="rating-wrap">
                                              <h3 class="head">Give a Review</h3>
-                                             <div class="wrap">
+                                             <form action="{{ route("storecomment") }}" class="bg-light p-5 contact-form" method="post">
+                                                @csrf
+                                                <input type="hidden" class="form-control" name="car_id" value="{{ $data->id }}">
+                                                <div class="form-group">
+                                                  <input type="text" class="form-control" name="subject" placeholder="Subject">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                  <textarea class="input form-control" name="review" {{-- id="" --}} cols="30" rows="7" placeholder="Your Review"></textarea>
+                                                </div>
+                                                <h5>Rate your experience!</h5>
+                                                <fieldset class="rating">
+                                                    <input type="radio" id="star5" name="rate" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+{{--                                                     <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Very Good - 4.5 stars"></label> --}}
+                                                    <input type="radio" id="star4" name="rate" value="4" /><label class = "full" for="star4" title="Good - 4 stars"></label>
+                                                    {{-- <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label> --}}
+                                                    <input type="radio" id="star3" name="rate" value="3" /><label class = "full" for="star3" title="Normal - 3 stars"></label>
+                                                    {{-- <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Normal - 2.5 stars"></label> --}}
+                                                    <input type="radio" id="star2" name="rate" value="2" /><label class = "full" for="star2" title="Bad - 2 stars"></label>
+                                                    {{-- <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Bad - 1.5 stars"></label> --}}
+                                                    <input type="radio" id="star1" name="rate" value="1" /><label class = "full" for="star1" title="Horrible - 1 star"></label>
+                                                   {{--  <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Horrible - 0.5 stars"></label> --}}
+                                                </fieldset>
+
+                                                @auth
+                                                <div class="form-group">
+                                                    <input type="submit" value="Send Review" class="btn btn-primary py-3 px-5">
+                                                </div>
+                                                @else
+                                                <a href="/login" class="btn-primary">To submit your review, please log in.</a>
+                                                @endauth
+
+                                                
+
+                                              </form>
+
+                                              
+
+                                            
+                                             {{-- <div class="wrap">
                                                  <p class="star">
                                                      <span>
                                                          <i class="ion-ios-star"></i>
@@ -291,7 +303,7 @@
                                                      </span>
                                                      <span>0 Reviews</span>
                                                  </p>
-                                             </div>
+                                             </div> --}}
                                          </div>
                                      </div>
                                  </div>

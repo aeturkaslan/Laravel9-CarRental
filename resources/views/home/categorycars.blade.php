@@ -56,6 +56,7 @@
         </div>
  --}}
 
+        <div class="container">
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 " >
         @foreach ($cars as $rs)
@@ -77,6 +78,7 @@
     </div>  
         @endforeach
     </div>
+</div>
         {{-- templatein kendisinde olan  --}}
 
       {{-- <div class="container">

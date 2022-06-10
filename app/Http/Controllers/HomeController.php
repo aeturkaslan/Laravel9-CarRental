@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -82,13 +84,30 @@ class HomeController extends Controller
        return redirect()->route('contact')->with('info', 'Your message has been sent, thank you!' );
     }
 
+    public function storecomment(Request $request){
+
+       $data = new Comment();
+       $data->user_id = Auth::id();     //logged in user id
+       $data->car_id = $request->input('car_id');
+       $data->subject = $request->input('subject');
+       $data->review = $request->input('review');
+       $data->rate = $request->input('rate');
+       $data->message = $request->input('message');
+       $data->ip = request()->ip();
+       $data->save();
+
+       return redirect()->route('car', ['id'=>$request->input('car_id')])->with('success', 'Your comment has been sent, thank you!' );
+    }
+
 
     public function car($id){ 
         $data = Car::find($id);
         $images = DB::table('images')->where('car_id', $id)->get();
+        $reviews = Comment::where('car_id', $id)->where('status', 'True')->get();
         return view('home.car', [
             'data'=>$data,
-            'images'=>$images
+            'images'=>$images,
+            'reviews'=>$reviews
         ]);
     }
 
