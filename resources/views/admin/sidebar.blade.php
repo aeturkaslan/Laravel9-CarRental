@@ -107,7 +107,7 @@
                 </li>
 
                 <li class="panel">
-                    <a href="/admin/message" >
+                    <a href="{{ route('admin.message.index') }}" >
                         <i class="icon-envelope"></i> Messages
 	   
                        

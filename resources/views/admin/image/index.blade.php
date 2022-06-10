@@ -62,16 +62,12 @@
                                             <tr>
                                                 <td>{{ $rs->id }}</td>
                                                 <td>{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}</td>
-                                                <td>{{ $rs->title }}</td>
-                                                
+                                                <td>{{ $rs->title }}</td>                                               
                                                 <td>
                                                     @if ($rs->image)
                                                     <img src="{{ Storage::url($rs->image) }}" style="height: 50px">
                                                     @endif
-
-                                                </td>
-
-                                                
+                                                </td>                                              
                                                 <td><a href="{{ route ('admin.image.destroy', ['cid'=>$car->id, 'id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
                                                     onclick="return confirm('Are you sure you want to delete this image? This action cannot be undone!')">Delete</a></td>
                                             </tr>

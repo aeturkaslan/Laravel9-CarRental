@@ -55,18 +55,24 @@
         </div>
         <div class="col-md-8 block-9 mb-md-5">
             <h3>Contact Form</h3>
-          <form action="#" class="bg-light p-5 contact-form">
+            @include('home.messages')
+          <form action="{{ route("storemessage") }}" class="bg-light p-5 contact-form" method="post">
+            @csrf
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Name">
+              <input type="text" class="form-control" name="name" placeholder="Your Name & Surname">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Email">
+              <input type="tel" class="form-control" name="phone" placeholder="Phone Number">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
+              <input type="text" class="form-control" name="email" placeholder="Email">
             </div>
             <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              <input type="text" class="form-control" name="subject" placeholder="Subject">
+            </div>
+            
+            <div class="form-group">
+              <textarea class="input form-control" name="message" {{-- id="" --}} cols="30" rows="7" placeholder="Message"></textarea>
             </div>
             <div class="form-group">
               <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
