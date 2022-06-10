@@ -45,7 +45,7 @@
 
         @yield('slider')
  
-        <div class="container">
+        {{-- <div class="container"> --}}  {{-- İçerikleri container içine almak için --}}
             @yield('content')
         </div>
 
