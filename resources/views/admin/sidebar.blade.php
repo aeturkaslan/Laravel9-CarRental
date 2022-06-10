@@ -99,7 +99,7 @@
                 </li>
 
                 <li class="panel">
-                    <a href="/admin/faq" >
+                    <a href="{{ route('admin.faq.index') }}" >
                         <i class="icon-info"></i> FAQ
 	   
                        
