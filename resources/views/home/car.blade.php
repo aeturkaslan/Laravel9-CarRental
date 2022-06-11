@@ -31,6 +31,10 @@
                     <div class="text text-center">
                         <span class="subheading">{{ $data->category->title }}</span>
                         <h2>{{ $data->title }}</h2>
+                        @php
+                          $average = $data->comment->average('rate');
+                        @endphp
+                        <p>This car has been rated </p> <i class="ion-ios-star  ">{{ number_format($average, 1) }}/5 stars!</i>
                     </div>
                 </div>
             </div>
@@ -171,14 +175,14 @@
                           <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
                             <div class="row">
                                      <div class="col-md-7">
-                                         <h3 class="head">{{-- 23 --}} Reviews</h3>
+                                         <h3 class="head">{{-- 23 --}} {{ $data->comment->count('id') }} Review(s) For This Car</h3>
 
                                          {{-- All Reviews --}}
 
                                          @foreach ($reviews as $rs)
                                              
                                          <div class="review d-flex">
-                                             <div class="user-img" style="background-image: url('{{ asset('assets') }}/images/person_1.jpg')"></div>
+                                             <div class="user-img" style="background-image: url('{{ asset('assets') }}/images/person_1.png')"></div>
                                              <div class="desc">
                                                  <h4>
                                                      <span class="text-left">{{ $rs->user->name }}</span>
@@ -186,14 +190,15 @@
                                                  </h4>
                                                  <p class="star">
                                                      <span>
-                                                         <i class="ion-ios-star @if ($rs->rate<1) -o empty @endif"></i>
-                                                         <i class="ion-ios-star @if ($rs->rate<2) -o empty @endif"></i>
+                                                         <i class="ion-ios-star  ">{{ ($rs->rate) }} Stars</i>
+                                                         {{-- <i class="ion-ios-star @if ($rs->rate<2) -o empty @endif"></i>
                                                          <i class="ion-ios-star @if ($rs->rate<3) -o empty @endif"></i>
-                                                         <i class="ion-ios-star @if ($rs->rate<4) -o empty @endif"></i>
-                                                         <i class="ion-ios-star @if ($rs->rate<5) -o empty @endif"></i>
+                                                         <i class="ion-ios-star @if ($rs->rate<4) -o empty @endif"></i>                                                 
+                                                         <i class="ion-ios-star @if ($rs->rate<5) -o empty @endif"></i> --}}
                                                      </span>
                                                      <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
                                                  </p>
+                                                 <h4>{{ $rs->subject }}</h4>
                                                  <p>{{ $rs->review }}</p>
                                              </div>
                                          </div>

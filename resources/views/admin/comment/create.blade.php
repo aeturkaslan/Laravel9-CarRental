@@ -34,7 +34,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <form role="form" action="{{ route ('admin.message.store')}}" method="post" enctype="multipart/form-data">
+                                            <form role="form" action="{{ route ('admin.comment.store')}}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 
                                                 <div class="form-group">

@@ -33,12 +33,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="carousel-car owl-carousel">
+                  {{-- @php
+                          $average = $rs->comment->average('rate');
+                  @endphp --}}
                   @foreach ($carlist1 as $rs)
 
                   <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="{{ Storage::url($rs->image) }}" style="width: 275px; height:150px" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title">{{ $rs->title }}</h5>
+                      <h5 class="card-title">{{ $rs->title }} {{-- <i class="ion-ios-star  ">{{ number_format($average, 1) }}</i> --}}</h5>
                       <div class="d-flex mb-3">
                         <span class="cat"> {{ $rs->gear }}</span>
                         <p class="price ml-auto"> {{ $rs->price }} ₺<span>/day</span></p>
