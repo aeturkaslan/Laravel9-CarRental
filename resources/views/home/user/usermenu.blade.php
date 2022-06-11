@@ -21,7 +21,7 @@
             <div>
                 <span></span>
             </div>
-          <a href=""><p>My Profile</p></a>
+          <a href="{{ route('userpanel.index') }}"><p>My Profile</p></a>
         </div>
     </div>
   </div>
@@ -43,7 +43,7 @@
             <div>
                 <span></span>
             </div>
-          <a href=""><p>My Reviews</p></a>
+          <a href="{{ route('userpanel.reviews') }}"><p>My Reviews</p></a>
         </div>
     </div>
   </div>

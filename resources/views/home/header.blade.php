@@ -77,7 +77,11 @@
               </a>
               
               <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item " href="/userpanel">User Panel</a>
+                <a class="dropdown-item " href="{{ route('userpanel.index') }}">User Panel</a>
+                <a class="dropdown-item " href="">My Reservations</a>
+                <a class="dropdown-item " href="{{ route('userpanel.reviews') }}">My Reviews</a>
+                <a class="dropdown-item " href="">Checkout</a>
+                <a class="dropdown-item " href="">My Cars</a>
                 <a class="dropdown-item " href="/logoutuser">Logout</a>
                 {{-- <div class="custom-menu">
                   <div class="row">
