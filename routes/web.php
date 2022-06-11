@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
 use App\Http\Controllers\AdminPanel\MessageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +70,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+// ********************* USER AUTH CONTROL *************************
+
+Route::middleware('auth')->group(function() {
+
+// ********************* USER ROUTES *************************
+
+Route::prefix('userpanel')->name('userpanel.')->controller(UserController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+
+});
 
 // ********************* ADMIN PANEL ROUTES *************************
 
@@ -176,4 +188,5 @@ Route::prefix('/user')->name('user.')->controller(AdminUserController::class)->g
     Route::get('/destroyrole/{id}/{rid}', 'destroyrole')->name('destroyrole');
     
     });
+});
 });
