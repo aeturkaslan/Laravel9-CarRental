@@ -8,6 +8,6 @@
 @section('icon', Storage::url($setting->icon))
 
 
-@section('content')
+@section('content3')
 
 @endsection

@@ -3,7 +3,7 @@
 @section('title', $data->title)
 
 
-@section('content')
+@section('content3')
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{ asset('assets') }}/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -116,6 +116,83 @@
           </div>      
         </div>
         </div>
+
+        {{-- Reservation Tab --}}
+<hr>
+        <section {{-- class="ftco-section ftco-no-pt bg-light" --}}>
+          <div class="container">
+              <div class="row no-gutters">
+                  <div class="col-md-12	{{-- featured-top --}}">
+                      <div class="row no-gutters">
+                            <div class="col-md-4 d-flex align-items-center">
+                                <form action="#" class="request-form ftco-animate bg-primary">
+                            <h2>Make your trip</h2>
+                                  <div class="form-group">
+                                      <label for="" class="label">Pick-up location</label>
+                                      <input type="text" class="form-control" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="City, Airport, Station, etc">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="" class="label">Drop-off location</label>
+                                      <input type="text" class="form-control" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="City, Airport, Station, etc">
+                                  </div>
+                                  <div class="d-flex">
+                                      <div class="form-group mr-2">
+                              <label for="" class="label">Pick-up date</label>
+                              <input type="text" class="form-control" id="book_pick_date" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="Date">
+                            </div>
+                            <div class="form-group ml-2">
+                              <label for="" class="label">Drop-off date</label>
+                              <input type="text" class="form-control" id="book_off_date" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="" class="label">Pick-up time</label>
+                          <input type="text" class="form-control" id="time_pick" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="Time">
+                        </div>
+                          <div class="form-group">
+                            <input type="submit" value="Rent {{ $data->title }} Now!" class="btn btn-secondary py-3 px-4">
+                          </div>
+                              </form>
+                            </div>
+                            <div class="col-md-8 d-flex align-items-center">
+                                <div class="services-wrap rounded-right w-100">
+                                    <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
+                                    <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                  <div class="services w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                    <div class="text w-100">
+                                      <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+                                  </div>
+                                  </div>      
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                  <div class="services w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                    <div class="text w-100">
+                                      <h3 class="heading mb-2">Select the Best Deal</h3>
+                                    </div>
+                                  </div>      
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                  <div class="services w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                    <div class="text w-100">
+                                      <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+                                    </div>
+                                  </div>      
+                                </div>
+                              </div>
+                              <p><a href="{{ route('contact') }}" class="btn btn-primary py-3 px-4">Do You Have Questions? Contact Us!</a></p>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+            </div>
+      </section>
+
+
+      {{-- Features/Description/Review section --}}
         <div class="row">
             <div class="col-md-12 pills">
                       <div class="bd-example bd-example-tabs">
@@ -168,7 +245,7 @@
                           </div>
 
                           <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-manufacturer-tab">
-                            <p>{!! $data->detail !!}</p>
+                            <p>{!! $data->description !!}</p>
                                   
                           </div>
 

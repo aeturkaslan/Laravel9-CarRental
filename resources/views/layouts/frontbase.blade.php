@@ -87,11 +87,15 @@ h1 { font-size: 1.5em; margin: 10px; }
             
         @show
 
+        @yield('content1')
+
         @yield('slider')
  
         {{-- <div class="container"> --}}  {{-- İçerikleri container içine almak için --}}
-            @yield('content')
+            @yield('content2')
         </div>
+
+        @yield('content3')
 
         @include("home.footer")
         @yield('foot')

@@ -3,7 +3,7 @@
 @section('title', $category->title . ' Cars')
 
 
-@section('content')
+@section('content3')
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{ asset('assets') }}/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
