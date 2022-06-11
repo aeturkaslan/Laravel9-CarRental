@@ -37,12 +37,13 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('references') }}">References</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href="#">Services</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Pricing</a>
-            </li>
+            </li> --}}
+
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categories
@@ -66,12 +67,45 @@
               </div>
              
             </li>
+
+
+            @auth
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }}
+              </a>
+              
+              <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item " href="/logoutuser">Logout</a>
+                <div class="custom-menu">
+                  <div class="row">
+                    <ul >
+                      <li><a href="#">deneme</a></li>
+                    </ul>
+
+                  </div>
+                </div>
+               
+              </div>
+             
+            </li>
+            @else
+            <li class="nav-item">
+              <a class="nav-link" href="/loginuser">Login</a>
+            </li>          
+            <li class="nav-item">
+              <a class="nav-link" href="/registeruser">Join</a>
+            </li>          
+            @endauth
+
+            
             <li class="nav-item">
               <a class="nav-link" href="#">Cars</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href="#">Blog</a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
             </li>
