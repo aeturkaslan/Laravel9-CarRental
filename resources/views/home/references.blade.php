@@ -32,7 +32,6 @@
 
         {!! $setting->references !!}
 
-        <p><a href="#" class="btn btn-primary py-3 px-4">Search Vehicle</a></p>
       </div>
             </div>
         </div>

@@ -26,7 +26,28 @@
                 <div class="car-details">
                     {{-- <div class="img rounded" style="background-image: url('{{ asset('assets') }}/images/bg_1.jpg');"></div> --}}
                     <div class="text-center">
-                        <img src="{{ Storage::url($data->image) }}" class="" alt="{{ $data->title }} " style="width: 850px; height:450px">
+                        {{-- <img src="{{ Storage::url($data->image) }}" class="" alt="{{ $data->title }} " style="width: 850px; height:450px"> --}}
+
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                          <div class="carousel-inner">
+                              @foreach ($images as $rs)
+                              
+                            <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                              <img class="d-block w-100" src="{{ Storage::url($rs->image) }}" alt="First slide" style="width: 500px; height:500px" >
+                            </div>
+                          
+                                
+                            @endforeach
+                          </div>
+                          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </div>
                     </div>
                     <div class="text text-center">
                         <span class="subheading">{{ $data->category->title }}</span>
@@ -171,14 +192,14 @@
                                   </div>
                                   <div class="d-flex">
                                       <div class="form-group mr-2">
-                                        <label for="birthday">Birthday:</label>
-<input type="date" id="birthday" name="rezdate">
+                                        <label for="rezdate" class="label">Pick-Up Date:</label>
+                                  <input type="date" id="returndate" name="rezdate">
                               {{-- <label for="" class="label">Pick-up date</label>
                               <input type="date" class="form-control" id="book_pick_date" name="rezdate" placeholder="Date"> --}}
                             </div>
                             <div class="form-group ml-2">
-                              <label for="birthday">Drop-off date:</label>
-<input type="date" id="birthday" name="returndate">
+                              <label for="returndate" class="label">Drop-off date:</label>
+                            <input type="date" id="returndate" name="returndate">
                              {{--  <label for="" class="label">Drop-off date</label>
                               <input type="text" class="form-control" id="book_off_date" name="returndate" placeholder="Date"> --}}
                             </div>
@@ -449,7 +470,7 @@
 
   <section class="ftco-section ftco-no-pt">
       <div class="container">
-          <div class="row justify-content-center">
+          {{-- <div class="row justify-content-center">
         <div class="col-md-12 heading-section text-center ftco-animate mb-5">
             <span class="subheading">Choose Car</span>
           <h2 class="mb-2">Related Cars</h2>
@@ -498,7 +519,7 @@
                       </div>
                   </div>
               </div>
-      </div>
+      </div> --}}
       </div>
   </section>
 	

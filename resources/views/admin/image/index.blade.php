@@ -53,7 +53,6 @@
                                                 <th>id</th>
                                                 <th>Title</th>
                                                 <th>Image</th>
-                                                <th style="width: 50px">Update</th>
                                                 <th style="width: 50px">Delete</th>
                                             </tr>
                                         </thead>
@@ -61,7 +60,7 @@
                                             @foreach ($images as $rs)
                                             <tr>
                                                 <td>{{ $rs->id }}</td>
-                                                <td>{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}</td>
+{{--                                                 <td>{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}</td> --}}
                                                 <td>{{ $rs->title }}</td>                                               
                                                 <td>
                                                     @if ($rs->image)

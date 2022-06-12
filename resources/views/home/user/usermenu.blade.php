@@ -48,27 +48,7 @@
     </div>
   </div>
 
-  <div class="row ">
-    <div class="col-md-12">
-        <div class="border w-100 p-4 rounded mb-2 d-flex">
-            <div>
-                <span></span>
-            </div>
-          <a href=""><p>Checkout</p></a>
-        </div>
-    </div>
-  </div>
 
-  <div class="row ">
-    <div class="col-md-12">
-        <div class="border w-100 p-4 rounded mb-2 d-flex">
-            <div>
-                <span></span>
-            </div>
-          <a href=""><p>My Cars</p></a>
-        </div>
-    </div>
-  </div>
 
   <div class="row ">
     <div class="col-md-12">

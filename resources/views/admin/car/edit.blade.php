@@ -98,8 +98,8 @@
 
                                                 <div class="form-group">
                                                     <label>Detail</label>
-                                                    <textarea class="form-control" id="detail" name='detail' value="{{ $data->description }}">
-
+                                                    <textarea class="form-control" id="detail" name='detail' >
+                                                        {{ $data->detail }}
                                                     </textarea>
                                                     <script>
                                                         ClassicEditor
