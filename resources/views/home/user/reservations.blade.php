@@ -40,6 +40,7 @@
                         <th>Pick Up</th>
                         <th>Drop off</th>
                         <th>Days</th>
+                        <th>Amount</th>
                         <th>Status</th>
                         <th style="width: 50px">Delete</th>
                     </tr>
@@ -53,6 +54,7 @@
                         <td>{{ $rs->rezlocation }}</td>
                         <td>{{ $rs->returnlocation }}</td>
                         <td>{{ $rs->days }}</td>
+                        <td>{{ $rs->amount }}</td>
                         <td>{{ $rs->status }}</td>
 
 

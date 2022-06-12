@@ -79,7 +79,7 @@ class CommentController extends Controller
         $data = Comment::find($id);
         $data->status = $request->status;
         $data->save();
-        return redirect(route('admin.comment.show'), ['id'=>$id]) ;
+        return redirect(route('admin.comment.show', ['id'=>$id])) ;
     }
 
     /**

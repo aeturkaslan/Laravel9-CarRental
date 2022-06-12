@@ -55,8 +55,8 @@
                                                 <td>
                                                     @foreach ($data->roles as $role)
                                                     {{ $role->name }}
-                                                    {{-- <a href="{{ route ('admin.user.destroyrole', ['uid'=>$data->id, 'rid'=>$role->id]) }}" class="btn btn-danger btn-sm" 
-                                                        onclick="return confirm('Are you sure you want to delete this role? This action cannot be undone!')">[X]</a> --}}
+                                                    <a href="{{ route ('admin.user.destroyrole', ['uid'=>$data->id, 'rid'=>$role->id]) }}" class="btn btn-danger btn-sm" 
+                                                        onclick="return confirm('Are you sure you want to delete this role? This action cannot be undone!')">[X]</a>
                                                     @endforeach    
                                                 </td>
                                             </tr>

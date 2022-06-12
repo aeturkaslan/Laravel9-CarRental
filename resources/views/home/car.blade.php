@@ -183,17 +183,17 @@
                               <input type="text" class="form-control" id="book_off_date" name="returndate" placeholder="Date"> --}}
                             </div>
                         </div>
-                        @php
+                        {{-- @php
                           $rez = ($data->rezdate) ;
                           $return = ( $data->returndate) ;
                           $datediff = $return - $rez;
                           $days = round($datediff / (60 * 60 * 24));
 
-                        @endphp 
+                        @endphp  --}}
                         <div class="form-group">
                           <label for="" class="label">Pick-up time</label>
                           <input type="text" class="form-control" id="time_pick" name="reztime" placeholder="Time">
-                          <input type="hidden" class="form-control" name="days" value="{{ $days }}">
+                          {{-- <input type="hidden" class="form-control" name="days" value="{{ $days }}"> --}}
                         </div>
                         @auth                 
                           <div class="form-group">

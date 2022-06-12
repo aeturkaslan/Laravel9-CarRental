@@ -9,6 +9,7 @@ use App\Models\Faq;
 use App\Models\Message;
 use App\Models\Reservation;
 use App\Models\Setting;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -176,6 +177,25 @@ class HomeController extends Controller
 
     public function storereservation(Request $request){
 
+        /* $fdate = $request->Fdate;
+        $tdate = $request->Tdate;
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');//now do whatever you like with $days */
+
+
+        $fdate = $request->input('rezdate');
+        $tdate = $request->input('returndate');
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');//now do whatever you like with $days
+
+
+        $amount = $days*$request->input('price');
+
+
         $data = new Reservation();
         $data->user_id = Auth::id();     //logged in user id
         $data->car_id = $request->input('car_id');
@@ -184,9 +204,9 @@ class HomeController extends Controller
         $data->reztime = $request->input('reztime');
         $data->returnlocation = $request->input('returnlocation');
         $data->returndate = $request->input('returndate');
-        $data->days = $request->input('days');
+        $data->days = $days;
         $data->price = $request->input('price');
-        $data->amount = $request->input('amount');
+        $data->amount = $amount;
         $data->ip = request()->ip();
         $data->note = $request->input('note');
         $data->status = $request->input('status');

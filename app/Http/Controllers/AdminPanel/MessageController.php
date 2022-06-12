@@ -83,7 +83,7 @@ class MessageController extends Controller
         $data = Message::find($id);
         $data->note = $request->note;
         $data->save();
-        return redirect(route('admin.message.show'), ['id'=>$id]) ;
+        return redirect(route('admin.message.show', ['id'=>$id]) );
     }
 
     /**

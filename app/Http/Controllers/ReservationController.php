@@ -78,7 +78,7 @@ class ReservationController extends Controller
         $data = Reservation::find($id);
         $data->status = $request->status;
         $data->save();
-        return redirect(route('admin.reservation.show'), ['id'=>$id]) ;
+        return redirect(route('admin.reservation.show', ['id'=>$id])) ;
     }
 
     /**
