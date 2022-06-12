@@ -108,7 +108,7 @@
                 
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Fax</label>
-                      <input value{{ $data->fax }} type="text" class="form-control" name="fax"  >
+                      <input value="{{ $data->fax }}" type="text" class="form-control" name="fax"  >
                     </div>
                 
                     <div class="form-group">
@@ -121,38 +121,38 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">smtpserver</label>
-                        <input value{{ $data->smtpserver }} type="text" class="form-control" name="smtpserver"  >
+                        <input value="{{ $data->smtpserver }}" type="text" class="form-control" name="smtpserver"  >
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlInput1">smtpemail</label>
-                        <input value{{ $data->smtpemail }} type="email" class="form-control" name="smtpemail"  >
+                        <input value="{{ $data->smtpemail }}" type="email" class="form-control" name="smtpemail"  >
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlInput1">smtppassword</label>
-                        <input value{{ $data->smtppassword }} type="password" class="form-control" name="smtppassword"  >
+                        <input value="{{ $data->smtppassword }}" type="password" class="form-control" name="smtppassword"  >
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlInput1">smtpport</label>
-                        <input value{{ $data->smtpport }} type="number" class="form-control" name="smtpport"  >
+                        <input value="{{ $data->smtpport }}" type="number" class="form-control" name="smtpport"  >
                       </div>
 
                       <hr />
                 
                     <div class="form-group">
                       <label for="exampleFormControlInput1">facebook</label>
-                      <input value{{ $data->facebook }} type="text" class="form-control" name="facebook"  >
+                      <input value="{{ $data->facebook }}" type="text" class="form-control" name="facebook"  >
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">twitter</label>
-                      <input value{{ $data->twitter }} type="text" class="form-control" name="twitter"  >
+                      <input value="{{ $data->twitter }}" type="text" class="form-control" name="twitter"  >
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">instagram</label>
-                      <input value{{ $data->instagram }} type="text" class="form-control" name="instagram"  >
+                      <input value="{{ $data->instagram }}" type="text" class="form-control" name="instagram"  >
                     </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">youtube</label>
-                      <input value{{ $data->youtube }} type="text" class="form-control" name="youtube"  >
+                      <input value="{{ $data->youtube }}" type="text" class="form-control" name="youtube"  >
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Icon</label>
@@ -160,7 +160,7 @@
                       </div>
                     <div class="form-group">
                       <label for="exampleFormControlInput1">status</label>
-                      <input value{{ $data->status }} type="text" class="form-control" name="status"  >
+                      <input value="{{ $data->status }}" type="text" class="form-control" name="status"  >
                     </div>
 
                     <div class="form-group">
@@ -204,23 +204,6 @@
                                             console.error( error );
                                     } );
                     </script>
-
-
-
-
-
-
-
-                        {{-- <script>
-                            $(document).ready(function(){
-    
-                                $('#references').summernote();
-                                $('#contact').summernote();
-                                $('#aboutus').summernote();
-                                
-                            });
-                            </script> --}}
-                        
                           
                       </div>
                 

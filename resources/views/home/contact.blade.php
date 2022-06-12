@@ -31,7 +31,7 @@
                         <div class="icon mr-3">
                             <span class="icon-map-o"></span>
                         </div>
-                      <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>  {{-- {{ $setting->address }} yap!!!! --}}
+                      <p><span>Address:</span> {{ $setting->address }}</p>  {{-- {{ $setting->address }} yap!!!! --}}
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -39,7 +39,7 @@
                         <div class="icon mr-3">
                             <span class="icon-mobile-phone"></span>
                         </div>
-                      <p><span>Phone:</span> <a href="tel://1234567920">{{ $setting->phone }}</a></p>
+                      <p><span>Phone:</span> <a href="">{{ $setting->phone }}</a></p>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -47,7 +47,7 @@
                         <div class="icon mr-3">
                             <span class="icon-envelope-o"></span>
                         </div>
-                      <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p> {{-- {{ $setting->smtpemail }} yap!!!! --}}
+                      <p><span>Email:</span> <a href="mailto:{{ $setting->smtpemail }}">{{ $setting->smtpemail }}</a></p>
                     </div>
                 </div>
                 {!! $setting->contact !!}

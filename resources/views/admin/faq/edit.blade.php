@@ -46,9 +46,7 @@
 
                                                 <div class="form-group">
                                                     <label>Answer</label>
-                                                    <textarea class="form-control" id="answer" name='answer' value="{{ $data->answer }}">
-
-                                                    </textarea>
+                                                    <textarea id="answer" name='answer' >{{ $data->answer }} </textarea>
                                                     <script>
                                                         ClassicEditor
                                                                 .create( document.querySelector( '#answer' ) )
