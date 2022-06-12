@@ -32,7 +32,7 @@
 
 
 
-                <li class="panel ">
+                {{-- <li class="panel ">
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
                         <i class="icon-edit"> </i> Reservations     
 	   
@@ -48,6 +48,14 @@
                         <li class=""><a href="progress.html"><i class="icon-angle-right"></i> Cancelled Reservations </a></li>
                         
                     </ul>
+                </li> --}}
+
+                <li class="panel">
+                    <a href="/admin/reservation" >
+                        <i class="icon-edit"></i> Reservations
+	   
+                       
+                    </a>                   
                 </li>
 
                 <li class="panel">

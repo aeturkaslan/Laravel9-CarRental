@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Message;
+use App\Models\Reservation;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -172,4 +173,25 @@ class HomeController extends Controller
             'error' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
+
+    public function storereservation(Request $request){
+
+        $data = new Reservation();
+        $data->user_id = Auth::id();     //logged in user id
+        $data->car_id = $request->input('car_id');
+        $data->rezlocation = $request->input('rezlocation');
+        $data->rezdate = $request->input('rezdate');
+        $data->reztime = $request->input('reztime');
+        $data->returnlocation = $request->input('returnlocation');
+        $data->returndate = $request->input('returndate');
+        $data->days = $request->input('days');
+        $data->price = $request->input('price');
+        $data->amount = $request->input('amount');
+        $data->ip = request()->ip();
+        $data->note = $request->input('note');
+        $data->status = $request->input('status');
+        $data->save();
+ 
+        return redirect()->route('car', ['id'=>$request->input('car_id')])->with('success', 'Your reservation has been made, thank you!' );
+     }
 }

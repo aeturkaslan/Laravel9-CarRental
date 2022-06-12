@@ -18,4 +18,9 @@ class Car extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function reservation()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

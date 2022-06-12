@@ -30,10 +30,11 @@
                     </div>
                     <div class="text text-center">
                         <span class="subheading">{{ $data->category->title }}</span>
-                        <h2>{{ $data->title }}</h2>
+                        <h2>{{ $data->title }} - {{ $data->price }}₺<span>/day</span></h2>
                         @php
                           $average = $data->comment->average('rate');
                         @endphp
+                        
                         <p>This car has been rated </p> <i class="ion-ios-star  ">{{ number_format($average, 1) }}/5 stars!</i>
                     </div>
                 </div>
@@ -120,38 +121,87 @@
         {{-- Reservation Tab --}}
 <hr>
         <section {{-- class="ftco-section ftco-no-pt bg-light" --}}>
+          @php
+            $amount = ($data->price)*($data->days);
+
+          @endphp
           <div class="container">
               <div class="row no-gutters">
                   <div class="col-md-12	{{-- featured-top --}}">
                       <div class="row no-gutters">
                             <div class="col-md-4 d-flex align-items-center">
-                                <form action="#" class="request-form ftco-animate bg-primary">
+                                <form action="{{ route('storereservation') }}" class="request-form ftco-animate bg-primary" method="post">
+                                  @csrf
+                                  <input type="hidden" class="form-control" name="car_id" value="{{ $data->id }}">
+                                  <input type="hidden" class="form-control" name="price" value="{{ $data->price }}">
+                                  <input type="hidden" class="form-control" name="amount" value="{{ $amount }}">
+                                  <input type="hidden" class="form-control" name="status" value="Pending">
                             <h2>Make your trip</h2>
                                   <div class="form-group">
-                                      <label for="" class="label">Pick-up location</label>
-                                      <input type="text" class="form-control" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="City, Airport, Station, etc">
+                                     <label class="label">Pick-up location</label>
+                                                    <select class="form-control text-dark" name="rezlocation" >
+                                                        <option class="text-dark">Istanbul Airport</option>
+                                                        <option class="text-dark">Istanbul Sabiha Gokcen Airport</option>
+                                                        <option class="text-dark">Istanbul Taksim Office</option>
+                                                        <option class="text-dark">Istanbul Yenibosna Office</option>
+                                                        <option class="text-dark">Ankara Esenboga Airport</option>
+                                                        <option class="text-dark">Ankara Yenimahalle Office</option>
+                                                        <option class="text-dark">Kayseri Airport</option>
+                                                        <option class="text-dark">Kayseri Melikgazi Office</option>
+                                                        <option class="text-dark">Karabuk Safranbolu Office</option>
+                                                    </select>
+                                      {{-- <label for="" class="label">Pick-up location</label>
+                                      <input type="text" class="form-control" name="rezlocation" placeholder="City, Airport, Station, etc"> --}}
                                   </div>
                                   <div class="form-group">
-                                      <label for="" class="label">Drop-off location</label>
-                                      <input type="text" class="form-control" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="City, Airport, Station, etc">
+                                    <label class="label">Drop-off location</label>
+                                                    <select class="form-control" name="returnlocation" >
+                                                        <option class="text-dark">Istanbul Airport</option>
+                                                        <option class="text-dark">Istanbul Sabiha Gokcen Airport</option>
+                                                        <option class="text-dark">Istanbul Taksim Office</option>
+                                                        <option class="text-dark">Istanbul Yenibosna Office</option>
+                                                        <option class="text-dark">Ankara Esenboga Airport</option>
+                                                        <option class="text-dark">Ankara Yenimahalle Office</option>
+                                                        <option class="text-dark">Kayseri Airport</option>
+                                                        <option class="text-dark">Kayseri Melikgazi Office</option>
+                                                        <option class="text-dark">Karabuk Safranbolu Office</option>
+                                                    </select>
+                                      {{-- <label for="" class="label">Drop-off location</label>
+                                      <input type="text" class="form-control" name="returnlocation" placeholder="City, Airport, Station, etc"> --}}
                                   </div>
                                   <div class="d-flex">
                                       <div class="form-group mr-2">
-                              <label for="" class="label">Pick-up date</label>
-                              <input type="text" class="form-control" id="book_pick_date" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="Date">
+                                        <label for="birthday">Birthday:</label>
+<input type="date" id="birthday" name="rezdate">
+                              {{-- <label for="" class="label">Pick-up date</label>
+                              <input type="date" class="form-control" id="book_pick_date" name="rezdate" placeholder="Date"> --}}
                             </div>
                             <div class="form-group ml-2">
-                              <label for="" class="label">Drop-off date</label>
-                              <input type="text" class="form-control" id="book_off_date" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="Date">
+                              <label for="birthday">Drop-off date:</label>
+<input type="date" id="birthday" name="returndate">
+                             {{--  <label for="" class="label">Drop-off date</label>
+                              <input type="text" class="form-control" id="book_off_date" name="returndate" placeholder="Date"> --}}
                             </div>
                         </div>
+                        @php
+                          $rez = ($data->rezdate) ;
+                          $return = ( $data->returndate) ;
+                          $datediff = $return - $rez;
+                          $days = round($datediff / (60 * 60 * 24));
+
+                        @endphp 
                         <div class="form-group">
                           <label for="" class="label">Pick-up time</label>
-                          <input type="text" class="form-control" id="time_pick" name="{{-- Burayı kesin doldur önemli!!!!!! --}}" placeholder="Time">
+                          <input type="text" class="form-control" id="time_pick" name="reztime" placeholder="Time">
+                          <input type="hidden" class="form-control" name="days" value="{{ $days }}">
                         </div>
+                        @auth                 
                           <div class="form-group">
                             <input type="submit" value="Rent {{ $data->title }} Now!" class="btn btn-secondary py-3 px-4">
                           </div>
+                          @else
+                            <a href="/login" class="btn btn-secondary py-3 px-4">To make reservation, please login.</a>
+                          @endauth
                               </form>
                             </div>
                             <div class="col-md-8 d-flex align-items-center">

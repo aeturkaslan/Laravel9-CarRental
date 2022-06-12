@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
  
-@section('title', 'Comments & Reviews List')
+@section('title', 'Reservations List')
  
 @section('content')
         <!--PAGE CONTENT -->
@@ -11,7 +11,7 @@
                     <div class="col-lg-12">
 
 
-                        <h2>Comment List</h2>
+                        <h2>Reservations List</h2>
 
 
 
@@ -36,9 +36,9 @@
                                                 <th>id</th>
                                                 <th>Car</th>
                                                 <th>Name</th>
-                                                <th>Subject</th>
-                                                <th>Review</th>
-                                                <th>Rate</th>
+                                                <th>Pick Up</th>
+                                                <th>Drop off</th>
+                                                <th>Days</th>
                                                 <th>Status</th>
                                                 <th style="width: 50px">Show</th>
                                                 <th style="width: 50px">Delete</th>
@@ -50,22 +50,22 @@
                                                 <td>{{ $rs->id }}</td>
                                                 <td><a href="{{ route('admin.car.show', ['id'=>$rs->car_id]) }}">{{ $rs->car->title }}</a></td>
                                                 <td>{{ $rs->user->name }}</td>
-                                                <td>{{ $rs->subject }}</td>
-                                                <td>{{ $rs->review }}</td>
-                                                <td>{{ $rs->rate }}</td>
+                                                <td>{{ $rs->rezlocation }}</td>
+                                                <td>{{ $rs->returnlocation }}</td>
+                                                <td>{{ $rs->days }}</td>
                                                 <td>{{ $rs->status }}</td>
 
 
                                                 <td>
-                                                    <a href="{{ route ('admin.comment.show', ['id'=>$rs->id]) }}" class="btn btn-success btn-sm" 
+                                                    <a href="{{ route ('admin.reservation.show', ['id'=>$rs->id]) }}" class="btn btn-success btn-sm" 
                                                         onclick="return !window.open(this.href, '','top=50 left=100 width=1100, height=700')">
                                                         Show
                                                     </a>
 
                                                 </td>
 
-                                                <td><a href="{{ route ('admin.comment.destroy', ['id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
-                                                    onclick="return confirm('Are you sure you want to delete this comment? This action cannot be undone!')">Delete</a></td>
+                                                <td><a href="{{ route ('admin.reservation.destroy', ['id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
+                                                    onclick="return confirm('Are you sure you want to delete this reservation? This action cannot be undone!')">Delete</a></td>
 
                                             </tr>
                                             @endforeach

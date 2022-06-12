@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
 use App\Http\Controllers\AdminPanel\MessageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,7 @@ Route::view('/registeruser', 'home.register')->name('registeruser');
 Route::get('/logoutuser', [HomeController::class,'logout'])->name('logoutuser');
 Route::view('/loginadmin', 'admin.login')->name('loginadmin');
 Route::post('/loginadmincheck', [HomeController::class,'loginadmincheck'])->name('loginadmincheck');
+Route::post('/storereservation', [HomeController::class,'storereservation'])->name('storereservation');
 
 //Route -> Controller -> View
 Route::get('/test', [HomeController::class,'test'])->name('test');
@@ -188,6 +190,17 @@ Route::prefix('/user')->name('user.')->controller(AdminUserController::class)->g
     Route::get('/destroy/{id}', 'destroy')->name('destroy');
     Route::post('/addrole/{id}', 'addrole')->name('addrole');
     Route::get('/destroyrole/{id}/{rid}', 'destroyrole')->name('destroyrole');
+    
+    });
+
+    // ********************* ADMIN RESERVATION ROUTES *************************
+
+Route::prefix('/reservation')->name('reservation.')->controller(ReservationController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/destroy/{id}', 'destroy')->name('destroy');
     
     });
 });
