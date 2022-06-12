@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
  
-@section('title', 'My Comments & Reviews')
+@section('title', 'My Reservations')
 
 
 
@@ -11,8 +11,8 @@
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
         <div class="col-md-9 ftco-animate pb-5">
-            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>My Comments<i class="ion-ios-arrow-forward"></i></span></p>
-          <h1 class="mb-3 bread">My Comments</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>My Reservations<i class="ion-ios-arrow-forward"></i></span></p>
+          <h1 class="mb-3 bread">My Reservations</h1>
         </div>
       </div>
     </div>
@@ -22,43 +22,42 @@
     <div class="container">
       <div class="row d-flex mb-5 contact-info">
           <div class="col-md-2">
-            <h3>User Menu</h3>
+            <h3>My Reservations</h3>
             <hr>
               
                 @include('home.user.usermenu')
              
         </div>
         <div class="col-md-10 block-9 mb-md-5">
-            <h3>My Comments</h3>
+            <h3>My Reservations</h3>
             <hr>
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>Car</th>
-                        <th>Subject</th>
-                        <th>Review</th>
-                        <th>Rate</th>
+                        <th>Name</th>
+                        <th>Pick Up</th>
+                        <th>Drop off</th>
+                        <th>Days</th>
                         <th>Status</th>
-
                         <th style="width: 50px">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($comments as $rs)
+                    @foreach ($reservations as $rs)
                     <tr>
                         <td>{{ $rs->id }}</td>
                         <td><a href="{{ route('car', ['id'=>$rs->car_id]) }}">{{ $rs->car->title }}</a></td>
-                        <td>{{ $rs->subject }}</td>
-                        <td>{{ $rs->review }}</td>
-                        <td>{{ $rs->rate }}</td>
+                        <td>{{ $rs->user->name }}</td>
+                        <td>{{ $rs->rezlocation }}</td>
+                        <td>{{ $rs->returnlocation }}</td>
+                        <td>{{ $rs->days }}</td>
                         <td>{{ $rs->status }}</td>
 
 
-
-
-                        <td><a href="{{ route ('userpanel.reviewdestroy', ['id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
-                            onclick="return confirm('Are you sure you want to delete this comment? This action cannot be undone!')">Delete</a></td>
+                        <td><a href="{{ route ('userpanel.reservationdestroy', ['id'=>$rs->id]) }}" class="btn btn-danger btn-sm" 
+                            onclick="return confirm('Are you sure you want to delete this reservation? This action cannot be undone!')">Delete</a></td>
 
                     </tr>
                     @endforeach

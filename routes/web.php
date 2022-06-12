@@ -83,6 +83,8 @@ Route::prefix('userpanel')->name('userpanel.')->controller(UserController::class
     Route::get('/', 'index')->name('index');
     Route::get('/reviews', 'reviews')->name('reviews');
     Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');
+    Route::get('/reservations', 'reservations')->name('reservations');
+    Route::get('/reservationdestroy/{id}', 'reservationdestroy')->name('reservationdestroy');
 
 });
 

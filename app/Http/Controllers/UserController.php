@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +17,15 @@ class UserController extends Controller
     public function index()
     {
         return view('home.user.index');
+    }
+
+    public function reservations(){
+
+        $reservations = Reservation::where('user_id', '=', Auth::id())->get();
+        return view('home.user.reservations', [
+            'reservations'=>$reservations,
+        ]);
+
     }
 
     public function reviews(){
@@ -100,5 +110,14 @@ class UserController extends Controller
 
         $data->delete();
         return redirect(route('userpanel.reviews'));
+    }
+
+    public function reservationdestroy($id)
+    {
+        //
+        $data = Reservation::find($id);
+
+        $data->delete();
+        return redirect(route('userpanel.reservations'));
     }
 }

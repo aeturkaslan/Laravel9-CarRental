@@ -32,7 +32,7 @@
             <div>
                 <span></span>
             </div>
-          <a href=""><p>My Reservations</p></a>
+          <a href="{{ route('userpanel.reservations') }}"><p>My Reservations</p></a>
         </div>
     </div>
   </div>
